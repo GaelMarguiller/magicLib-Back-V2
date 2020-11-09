@@ -1,0 +1,66 @@
+{
+  "name": "magic-lib-back",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/GaelMarguiller/magicLib-Back-V2.git",
+  "author": "GMarguiller <gael.marguiller@supinternet.fr>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "connect-mongo": "^3.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.2.0",
+    "mongoose": "^5.10.13",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.5"
+  },
+  "devDependencies": {
+    "@types/connect-mongo": "^3.1.3",
+    "@types/cors": "^2.8.8",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.8",
+    "@types/hapi__joi": "^17.1.6",
+    "@types/helmet": "^4.0.0",
+    "@types/jest": "^26.0.15",
+    "@types/mongoose": "^5.7.37",
+    "@types/morgan": "^1.9.2",
+    "@types/node": "^14.14.6",
+    "@types/passport": "^1.0.4",
+    "@types/passport-local": "^1.0.33",
+    "@typescript-eslint/eslint-plugin": "^4.6.1",
+    "@typescript-eslint/parser": "^4.6.1",
+    "eslint": "^7.13.0",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.6"
+  },
+  "scripts": {
+    "start": "node ./dist/server.js",
+    "postinstall": "tsc --project tsconfig.json",
+    "start-dev": "node -r ts-node/register ./src/server.ts",
+    "start:watch": "nodemon -r dotenv/config ./src/config.ts",
+    "build": "tsc --project tsconfig.json",
+    "test": "jest",
+    "eslint": "eslint src/**/*.ts",
+    "heroku": "git push heroku master"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      ".git",
+      "node_modules"
+    ],
+    "watch": [
+      "src"
+    ],
+    "exec": "npm start",
+    "ext": "ts"
+  }
+}

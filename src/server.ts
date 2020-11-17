@@ -9,10 +9,6 @@ import cors from 'cors';
 import { configuration, IConfig } from './config';
 import connect from './database';
 import generalRoute from './routes/router';
-import {
-  authenticationInitialize,
-  authenticationSession,
-} from './controllers/authenticationController';
 
 const MongoStore = connectMongo(session);
 const sessionStore = new MongoStore({ mongooseConnection: mongoose.connection });
@@ -51,8 +47,6 @@ export default function createExpressApp(config: IConfig): express.Express {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   app.use(session(sessionConfig));
-  app.use(authenticationInitialize());
-  app.use(authenticationSession());
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   app.use(((err, _req, res, _next) => {
     // eslint-disable-next-line no-console
